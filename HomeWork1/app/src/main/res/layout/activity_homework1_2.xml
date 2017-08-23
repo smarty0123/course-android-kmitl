@@ -87,6 +87,7 @@
         android:layout_marginTop="103dp"
         android:background="@android:color/holo_red_dark"
         android:text="SEE NEW TOPICS"
+        android:textColor="#ffffff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
