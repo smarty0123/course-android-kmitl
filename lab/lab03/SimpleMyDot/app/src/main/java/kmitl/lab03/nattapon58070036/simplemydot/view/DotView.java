@@ -50,4 +50,5 @@ public class DotView extends View {
     public void setDot(ArrayList<Dot> listDot) {
         this.listDot = listDot;
     }
+
 }

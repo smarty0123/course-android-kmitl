@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/clear_dot"
-        android:onClick="clearDot"
+        android:onClick="clearAllDot"
         app:layout_constraintBaseline_toBaselineOf="@+id/button"
         app:layout_constraintLeft_toRightOf="@+id/button"
         app:layout_constraintRight_toRightOf="parent" />
