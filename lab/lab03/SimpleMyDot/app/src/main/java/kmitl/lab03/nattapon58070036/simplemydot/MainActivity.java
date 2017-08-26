@@ -4,6 +4,7 @@ package kmitl.lab03.nattapon58070036.simplemydot;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -22,6 +23,21 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangeLi
         listDot = new ArrayList<>();
         setContentView(R.layout.activity_main);
         dotView = (DotView) findViewById(R.id.dotView);
+        dotView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    Random random = new Random();
+                    int radius = random.nextInt(80) + 10;
+                    int red = random.nextInt(255);
+                    int green = random.nextInt(255);
+                    int blue = random.nextInt(255);
+                    int color = Color.rgb(red, green, blue);
+                    createDot((int) (event.getX()), (int) (event.getY()), radius, color);
+                }
+                return true;
+            }
+        });
     }
 
     public void onRandomDot(View view) {
@@ -41,15 +57,21 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangeLi
         listDot.add(dot);
     }
 
+    public void createDot(int x, int y, int r, int c) {
+        Dot dot = new Dot(this, x, y, r, c);
+        listDot.add(dot);
+    }
+
     @Override
     public void onDotChanged(Dot dot) {
         dotView.setDot(listDot);
         dotView.invalidate();
     }
 
-    public void clearDot(View view) {
+    public void clearAllDot(View view) {
         listDot = new ArrayList<>();
         dotView.setDot(listDot);
         dotView.invalidate();
     }
 }
+

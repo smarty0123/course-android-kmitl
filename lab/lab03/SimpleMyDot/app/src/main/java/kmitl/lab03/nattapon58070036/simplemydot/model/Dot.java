@@ -1,7 +1,6 @@
 package kmitl.lab03.nattapon58070036.simplemydot.model;
 
 
-
 /**
  * Created by student on 8/25/2017 AD.
  */
@@ -22,6 +21,7 @@ public class Dot {
     private int centerY;
     private int radius;
     private int color;
+
     public Dot(OnDotChangeListener listener,
                int centerX, int centerY, int radius, int color) {
         this.listener = listener;
@@ -32,10 +32,11 @@ public class Dot {
         this.listener.onDotChanged(this);
     }
 
-    public Dot(int centerX, int centerY, int radius) {
+    public Dot(int centerX, int centerY, int radius, int color) {
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
+        this.color = color;
     }
 
     public int getCenterX() {
