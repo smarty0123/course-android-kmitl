@@ -1,0 +1,7 @@
+#Sat Aug 19 15:12:43 ICT 2017
+base.0=C\:\\Users\\SMART\\Downloads\\course-android-kmitl-master\\lab02\\MyApplication\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_2b02d58af4d86a6935e16769d040a9f56a6cb310
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\SMART\\Downloads\\course-android-kmitl-master\\lab02\\MyApplication\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_b7f47d20038bf16082fcc399d35c7e103755f968\\classes.dex
+base.1=C\:\\Users\\SMART\\Downloads\\course-android-kmitl-master\\lab02\\MyApplication\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_b7f47d20038bf16082fcc399d35c7e103755f968
+file.0=C\:\\Users\\SMART\\Downloads\\course-android-kmitl-master\\lab02\\MyApplication\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_2b02d58af4d86a6935e16769d040a9f56a6cb310\\classes.dex
