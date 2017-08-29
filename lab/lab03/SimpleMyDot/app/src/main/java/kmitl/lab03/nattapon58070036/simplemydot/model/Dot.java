@@ -21,14 +21,19 @@ public class Dot {
     private int centerY;
     private int radius;
     private int color;
+    private int red;
+    private int green;
+    private int blue;
 
     public Dot(OnDotChangeListener listener,
-               int centerX, int centerY, int radius, int color) {
+               int centerX, int centerY, int radius, int r, int g, int b) {
         this.listener = listener;
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
-        this.color = color;
+        this.red = r;
+        this.green = g;
+        this.blue = b;
         this.listener.onDotChanged(this);
     }
 
@@ -72,5 +77,29 @@ public class Dot {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public int getRed() {
+        return red;
+    }
+
+    public void setRed(int red) {
+        this.red = red;
+    }
+
+    public int getGreen() {
+        return green;
+    }
+
+    public void setGreen(int green) {
+        this.green = green;
+    }
+
+    public int getBlue() {
+        return blue;
+    }
+
+    public void setBlue(int blue) {
+        this.blue = blue;
     }
 }
