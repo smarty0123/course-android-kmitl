@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangeLi
         super.onCreate(savedInstanceState);
         listDot = new ArrayList<>();
         setContentView(R.layout.activity_main);
+        onTouchDot();
+    }
+
+    public void onTouchDot() {
         dotView = (DotView) findViewById(R.id.dotView);
         dotView.setOnTouchListener(new View.OnTouchListener() {
             @Override
