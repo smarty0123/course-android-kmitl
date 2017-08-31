@@ -42,4 +42,15 @@
         app:layout_constraintLeft_toRightOf="@+id/button"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hold_for_edit"
+        tools:layout_editor_absoluteY="59dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/dotView"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/dotView" />
+
 </android.support.constraint.ConstraintLayout>

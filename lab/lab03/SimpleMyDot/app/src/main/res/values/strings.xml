@@ -2,4 +2,5 @@
     <string name="app_name">SimpleMyDot</string>
     <string name="random_dot">RANDOM DOT</string>
     <string name="clear_dot">CLEAR DOT</string>
+    <string name="hold_for_edit">Hold for Edit</string>
 </resources>
