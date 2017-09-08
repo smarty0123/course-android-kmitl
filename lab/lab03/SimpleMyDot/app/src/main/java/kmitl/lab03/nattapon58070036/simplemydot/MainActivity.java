@@ -5,6 +5,7 @@ import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.AlertDialog;
@@ -12,11 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 import kmitl.lab03.nattapon58070036.simplemydot.model.Dot;
+import kmitl.lab03.nattapon58070036.simplemydot.model.DotParcelable;
+import kmitl.lab03.nattapon58070036.simplemydot.model.DotSerializable;
 import kmitl.lab03.nattapon58070036.simplemydot.view.DotView;
 
 public class MainActivity extends AppCompatActivity implements Dot.OnDotChangeListener {
@@ -31,6 +35,27 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangeLi
         super.onCreate(savedInstanceState);
         listDot = new ArrayList<>();
         setContentView(R.layout.activity_main);
+        Button btnOpenActivity = (Button) findViewById(R.id.btnOpenActivity);
+        final DotSerializable dotSerializable = new DotSerializable();
+        dotSerializable.setCenterX(150);
+        dotSerializable.setCenterY(150);
+        dotSerializable.setColor(Color.RED);
+        dotSerializable.setRadius(30);
+
+        final DotParcelable dotParcelable = new DotParcelable(150, 150, 30);
+        btnOpenActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("xValue", 17);
+                intent.putExtra("dotSerializable", dotSerializable);
+                //parcelable
+                intent.putExtra("dotParcelable", dotParcelable);
+                startActivity(intent);
+                finish();
+
+            }
+        });
         onTouchDot();
     }
 
