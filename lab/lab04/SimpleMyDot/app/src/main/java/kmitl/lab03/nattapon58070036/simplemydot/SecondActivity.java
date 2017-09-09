@@ -30,20 +30,19 @@ public class SecondActivity extends AppCompatActivity {
         });
         int x = getIntent().getIntExtra("xValue", 0);
         dotSerializable = (DotSerializable)getIntent().getSerializableExtra("dotSerializable");
-        dotPacelable = (DotParcelable)getIntent().getParcelableExtra("dotParcelable");
+        dotPacelable = getIntent().getParcelableExtra("dotParcelable");
         TextView text = (TextView) findViewById(R.id.textView3);
         TextView text2 = (TextView) findViewById(R.id.textView4);
         TextView text3 = (TextView) findViewById(R.id.textView5);
         TextView text4 = (TextView) findViewById(R.id.textView6);
         TextView text5 = (TextView) findViewById(R.id.textView8);
-        text.setText(Integer.toString(x));
+        text.setText(String.valueOf(x));
         text2.setText(String.valueOf("centerX : " + dotSerializable.getCenterX()) +
         "centerY : " + dotSerializable.getCenterY());
         text3.setText("Radius : " + dotSerializable.getRadius());
         text4.setText("Color : " + dotSerializable.getColor());
         text5.setText("Parcelable => centerX: " + dotPacelable.getCenterX() + "centerY: " + dotPacelable.getCenterY() +
         "radius: " + dotPacelable.getRadius());
-
     }
 
 

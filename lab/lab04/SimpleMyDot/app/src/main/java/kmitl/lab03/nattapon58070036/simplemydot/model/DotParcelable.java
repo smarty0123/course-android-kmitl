@@ -11,29 +11,35 @@ public class DotParcelable implements Parcelable {
     private int centerX;
     private int centerY;
     private int radius;
+    private int dotPosition;
+    private int color;
 
-    public DotParcelable(int centerX, int centerY, int radius){
+    public DotParcelable(int dotPosition, int color) {
+        this.dotPosition = dotPosition;
+        this.color = color;
+    }
+
+    public DotParcelable(int centerX, int centerY, int radius) {
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
     }
 
+
+    public DotParcelable(int centerX, int centerY, int radius, int dotPosition) {
+        this.centerX = centerX;
+        this.centerY = centerY;
+        this.radius = radius;
+        this.dotPosition = dotPosition;
+    }
+
+
     protected DotParcelable(Parcel in) {
         centerX = in.readInt();
         centerY = in.readInt();
         radius = in.readInt();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(centerX);
-        dest.writeInt(centerY);
-        dest.writeInt(radius);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        dotPosition = in.readInt();
+        color = in.readInt();
     }
 
     public static final Creator<DotParcelable> CREATOR = new Creator<DotParcelable>() {
@@ -70,5 +76,35 @@ public class DotParcelable implements Parcelable {
 
     public void setRadius(int radius) {
         this.radius = radius;
+    }
+
+    public int getDotPosition() {
+        return dotPosition;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public void setDotPosition(int dotPosition) {
+        this.dotPosition = dotPosition;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(centerX);
+        dest.writeInt(centerY);
+        dest.writeInt(radius);
+        dest.writeInt(dotPosition);
+        dest.writeInt(color);
     }
 }

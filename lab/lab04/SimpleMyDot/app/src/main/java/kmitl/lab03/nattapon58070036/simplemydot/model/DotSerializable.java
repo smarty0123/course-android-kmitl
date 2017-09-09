@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by student on 9/8/2017 AD.
  */
 
-public class DotSerializable implements Serializable{
+public class DotSerializable implements Serializable {
     private int centerX;
     private int centerY;
     private int radius;
