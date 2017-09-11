@@ -8,6 +8,7 @@ import android.content.Intent;
 
 import android.graphics.Bitmap;
 
+import android.graphics.Canvas;
 import android.net.Uri;
 
 
@@ -18,6 +19,7 @@ import android.os.Bundle;
 
 
 import android.view.View;
+import android.widget.Toast;
 
 
 import java.io.File;
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onRemoveAll(View view) {
         dots.clearAll();
+        Toast.makeText(getApplicationContext(), "Cleared", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -74,37 +77,43 @@ public class MainActivity extends AppCompatActivity
             Dot newDot = new Dot(x, y, 70, new Colors().getColor());
             dots.addDot(newDot);
         } else {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                    this);
-            alertDialogBuilder.setTitle("What you want to do?");
-            alertDialogBuilder
-                    .setMessage("")
-                    .setCancelable(true)
-                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dots.removeBy(dotPosition);
-                        }
-                    })
-                    .setNegativeButton("Edit Color", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            final DotParcelable dotParcelable = new DotParcelable(dotPosition, dots.getAllDot().get(dotPosition).getColor());
-                            Intent editActIntent = new Intent(MainActivity.this, EditActivity.class);
-                            editActIntent.putExtra("dotParcelable", dotParcelable);
-                            startActivityForResult(editActIntent, 1);
-                        }
-                    });
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+            alertDialog(dotPosition);
         }
+    }
+
+    public void alertDialog(final int dotPosition) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle("What you want to do?");
+        alertDialogBuilder
+                .setMessage("")
+                .setCancelable(true)
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dots.removeBy(dotPosition);
+                        Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Edit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        final DotParcelable dotParcelable = new DotParcelable(dotPosition, dots.getAllDot().get(dotPosition).getColor(), dots.getAllDot().get(dotPosition).getRadius());
+                        Intent editActIntent = new Intent(MainActivity.this, EditActivity.class);
+                        editActIntent.putExtra("dotParcelable", dotParcelable);
+                        startActivityForResult(editActIntent, 1);
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
+            DotParcelable dotParcelable = data.getParcelableExtra("reDotParcelable");
             if (resultCode == Activity.RESULT_OK) {
-                DotParcelable dotParcelable = data.getParcelableExtra("reDotParcelable");
                 dots.getAllDot().get(dotParcelable.getDotPosition()).setColor(dotParcelable.getColor());
-
+            } else {
+                dots.getAllDot().get(dotParcelable.getDotPosition()).setRadius(dotParcelable.getRadius());
             }
         }
     }
@@ -126,9 +135,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     private Bitmap createBitmapFromView(View view) {
-        view.buildDrawingCache(false);
-        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
-        view.destroyDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bitmap);
+        view.layout(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
+        view.draw(c);
         return bitmap;
     }
 

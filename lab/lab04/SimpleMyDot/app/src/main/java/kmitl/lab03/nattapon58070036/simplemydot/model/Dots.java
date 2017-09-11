@@ -2,7 +2,6 @@ package kmitl.lab03.nattapon58070036.simplemydot.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Dots {
 
     public interface OnDotsChangeListener {

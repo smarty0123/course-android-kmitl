@@ -14,14 +14,19 @@ public class DotParcelable implements Parcelable {
     private int dotPosition;
     private int color;
 
+    public DotParcelable(int dotPosition){
+        this.dotPosition = dotPosition;
+
+    }
+
     public DotParcelable(int dotPosition, int color) {
         this.dotPosition = dotPosition;
         this.color = color;
     }
 
-    public DotParcelable(int centerX, int centerY, int radius) {
-        this.centerX = centerX;
-        this.centerY = centerY;
+    public DotParcelable(int dotPosition, int color, int radius) {
+        this.dotPosition = dotPosition;
+        this.color = color;
         this.radius = radius;
     }
 
