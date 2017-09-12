@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.net.Uri;
 
 
@@ -30,6 +31,7 @@ import java.util.Random;
 import kmitl.lab03.nattapon58070036.simplemydot.model.Colors;
 import kmitl.lab03.nattapon58070036.simplemydot.model.Dot;
 import kmitl.lab03.nattapon58070036.simplemydot.model.DotParcelable;
+import kmitl.lab03.nattapon58070036.simplemydot.model.DotSerializable;
 import kmitl.lab03.nattapon58070036.simplemydot.model.Dots;
 import kmitl.lab03.nattapon58070036.simplemydot.view.DotView;
 
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity
     public void onShare(View view) {
         Bitmap bitmap = createBitmapFromView(dotView);
         saveBitmap(bitmap);
-        File imagePath = new File(this.getCacheDir(), "images");
+        File imagePath = new File(getCacheDir(), "images");
         File newFile = new File(imagePath, "image.png");
         Uri contentUri = FileProvider.getUriForFile(this, "kmitl.lab03.nattapon58070036.simplemydot.fileprovider", newFile);
         if (contentUri != null) {
@@ -154,5 +156,22 @@ public class MainActivity extends AppCompatActivity
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onSecondAct(View view) {
+        final DotSerializable dotSerializable = new DotSerializable();
+        dotSerializable.setCenterX(150);
+        dotSerializable.setCenterY(150);
+        dotSerializable.setColor(Color.RED);
+        dotSerializable.setRadius(30);
+        final DotParcelable dotParcelable = new DotParcelable(150, 150, 30);
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra("xValue", 17);
+        //Serializable
+        intent.putExtra("dotSerializable", dotSerializable);
+        //parcelable
+        intent.putExtra("dotParcelable", dotParcelable);
+        startActivity(intent);
+        //finish();
     }
 }
