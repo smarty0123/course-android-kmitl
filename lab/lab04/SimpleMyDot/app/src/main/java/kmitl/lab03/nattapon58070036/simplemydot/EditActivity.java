@@ -23,7 +23,6 @@ import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
 import kmitl.lab03.nattapon58070036.simplemydot.model.DotParcelable;
 
 
-
 public class EditActivity extends AppCompatActivity {
 
     @Override
@@ -49,11 +48,6 @@ public class EditActivity extends AppCompatActivity {
                 .setNegativeButton("Edit Size", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         showSeekBar();
-                    }
-                })
-                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
                     }
                 });
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -87,7 +81,6 @@ public class EditActivity extends AppCompatActivity {
         alert.setTitle("Edit Dot Size");
         alert.setCancelable(false);
         LinearLayout linear = new LinearLayout(this);
-
         linear.setOrientation(LinearLayout.VERTICAL);
         final TextView text = new TextView(this);
         text.setPadding(500, 50, 0, 50);
@@ -111,12 +104,9 @@ public class EditActivity extends AppCompatActivity {
 
             }
         });
-
         linear.addView(text);
         linear.addView(seek);
         alert.setView(linear);
-
-
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 final DotParcelable reDotParcelable = new DotParcelable(dotParcelable.getDotPosition());
