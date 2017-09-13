@@ -64,4 +64,14 @@
         app:layout_constraintRight_toRightOf="@+id/dotView"
         app:layout_constraintTop_toTopOf="@+id/dotView" />
 
+    <Button
+        android:id="@+id/button4"
+        android:onClick="onUndo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/undo"
+        app:layout_constraintBaseline_toBaselineOf="@+id/shareBtn"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/dotView" />
+
 </android.support.constraint.ConstraintLayout>

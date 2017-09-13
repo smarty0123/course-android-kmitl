@@ -15,7 +15,7 @@ public class Dots {
     }
 
     private List<Dot> allDot = new ArrayList<>();
-
+    private List<Dot> backupDot = new ArrayList<>();
     public List<Dot> getAllDot() {
         return allDot;
     }
@@ -26,11 +26,13 @@ public class Dots {
     }
 
     public void removeBy(int position) {
+        backupDot.add(allDot.get(position));
         allDot.remove(position);
         this.listener.onDotsChanged(this);
     }
 
     public void clearAll() {
+        backupDot = new ArrayList<>(allDot);
         allDot.clear();
         this.listener.onDotsChanged(this);
     }
@@ -40,12 +42,27 @@ public class Dots {
             int centerX = allDot.get(i).getCenterX();
             int centerY = allDot.get(i).getCenterY();
             double distance = Math.pow(Math.pow(centerX - x, 2) + Math.pow(centerY - y, 2), 0.5);
-            if (distance <= 70) {
+            if (distance <= allDot.get(i).getRadius()) {
                 return i;
             }
         }
         return -1;
     }
 
+    public void undoDot(){
+        if(allDot.isEmpty()){
+            allDot = new ArrayList<>(backupDot);
+            backupDot.clear();
+        }else {
+            if(backupDot.isEmpty()){
+                allDot.remove(allDot.size()-1);
+            }else{
+                allDot.add(backupDot.get(0));
+                backupDot.remove(0);
+            }
+
+        }
+        this.listener.onDotsChanged(this);
+    }
 
 }

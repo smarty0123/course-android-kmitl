@@ -23,8 +23,8 @@ import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
 import kmitl.lab03.nattapon58070036.simplemydot.model.DotParcelable;
 
 
-public class EditActivity extends AppCompatActivity {
 
+public class EditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

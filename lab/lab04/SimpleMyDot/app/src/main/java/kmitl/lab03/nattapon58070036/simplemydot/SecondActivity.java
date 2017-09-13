@@ -1,13 +1,13 @@
 package kmitl.lab03.nattapon58070036.simplemydot;
 
-import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.Serializable;
+
 
 import kmitl.lab03.nattapon58070036.simplemydot.model.DotParcelable;
 import kmitl.lab03.nattapon58070036.simplemydot.model.DotSerializable;

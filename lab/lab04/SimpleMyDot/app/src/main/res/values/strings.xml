@@ -8,4 +8,5 @@
     <string name="share">Share</string>
     <string name="backtomain">BacktoMain</string>
     <string name="textview">TextView</string>
+    <string name="undo">UNDO</string>
 </resources>
