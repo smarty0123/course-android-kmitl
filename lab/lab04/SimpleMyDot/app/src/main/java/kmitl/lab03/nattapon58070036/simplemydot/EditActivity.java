@@ -83,7 +83,7 @@ public class EditActivity extends AppCompatActivity {
         LinearLayout linear = new LinearLayout(this);
         linear.setOrientation(LinearLayout.VERTICAL);
         final TextView text = new TextView(this);
-        text.setPadding(500, 50, 0, 50);
+        text.setPadding(400, 50, 0, 50);
         text.setText("Radius: " + dotParcelable.getRadius());
         final SeekBar seek = new SeekBar(this);
         seek.setMax(120);

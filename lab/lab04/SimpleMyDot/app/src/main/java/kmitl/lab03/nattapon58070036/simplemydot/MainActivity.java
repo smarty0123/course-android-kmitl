@@ -120,12 +120,28 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void onShare(View view) {
+    public void OnAllContentShare(View view) {
+        Bitmap bitmap = createBitmapFromView(getWindow().getDecorView().findViewById(android.R.id.content));
+        saveBitmap(bitmap);
+        Uri contentUri = getUriFile();
+        shareIntent(contentUri);
+    }
+
+    public void onDotViewShare(View view) {
         Bitmap bitmap = createBitmapFromView(dotView);
         saveBitmap(bitmap);
+        Uri contentUri = getUriFile();
+        shareIntent(contentUri);
+    }
+
+    private Uri getUriFile() {
         File imagePath = new File(getCacheDir(), "images");
         File newFile = new File(imagePath, "image.png");
         Uri contentUri = FileProvider.getUriForFile(this, "kmitl.lab03.nattapon58070036.simplemydot.fileprovider", newFile);
+        return contentUri;
+    }
+
+    private void shareIntent(Uri contentUri) {
         if (contentUri != null) {
             Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
@@ -145,11 +161,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void saveBitmap(Bitmap bitmap) {
-        // save bitmap to cache directory
         try {
             File cachePath = new File(this.getCacheDir(), "images");
-            cachePath.mkdirs(); // don't forget to make the directory
-            FileOutputStream stream = new FileOutputStream(cachePath + "/image.png"); // overwrites this image every time
+            cachePath.mkdirs();
+            FileOutputStream stream = new FileOutputStream(cachePath + "/image.png");
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             stream.close();
 
@@ -167,12 +182,9 @@ public class MainActivity extends AppCompatActivity
         final DotParcelable dotParcelable = new DotParcelable(150, 150, 30);
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
         intent.putExtra("xValue", 17);
-        //Serializable
         intent.putExtra("dotSerializable", dotSerializable);
-        //parcelable
         intent.putExtra("dotParcelable", dotParcelable);
         startActivity(intent);
-        //finish();
     }
 
     public void onUndo(View view) {
