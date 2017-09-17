@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.net.Uri;
 
 
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
+import kmitl.lab03.nattapon58070036.simplemydot.fragment.DotViewFragment;
 import kmitl.lab03.nattapon58070036.simplemydot.model.Colors;
 import kmitl.lab03.nattapon58070036.simplemydot.model.Dot;
 import kmitl.lab03.nattapon58070036.simplemydot.model.DotParcelable;
@@ -46,8 +48,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dotView = (DotView) findViewById(R.id.dotView);
-        dotView.setOnDotViewPressListener(this);
+        //dotView = (DotView) findViewById(R.id.dotView);
+        //dotView.setOnDotViewPressListener(this);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragmentContainer, new DotViewFragment().newInstance()).commit();
 
         dots = new Dots();
         dots.setListener(this);

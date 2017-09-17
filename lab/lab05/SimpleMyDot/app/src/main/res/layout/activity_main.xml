@@ -1,91 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="kmitl.lab03.nattapon58070036.simplemydot.MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/random_dot"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:onClick="onRandomDot"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/button2" />
+        android:orientation="horizontal">
 
-    <kmitl.lab03.nattapon58070036.simplemydot.view.DotView
-        android:id="@+id/dotView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/btnUndo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/undo" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+
+        <Button
+            android:id="@+id/btnShareAll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/share_all_content" />
+
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/share" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/clear_dot"
-        android:onClick="onRemoveAll"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button"
-        app:layout_constraintLeft_toRightOf="@+id/button"
-        app:layout_constraintRight_toLeftOf="@+id/btnOpenActivity" />
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+        <Button
+            android:id="@+id/btnRandom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/random_dot" />
 
-    <Button
-        android:id="@+id/btnOpenActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/open_activity"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="8dp"
-        android:onClick="onSecondAct"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button2" />
 
-    <Button
-        android:id="@+id/shareBtn"
-        android:onClick="onDotViewShare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="0dp"
-        android:text="@string/share"
-        app:layout_constraintRight_toRightOf="@+id/dotView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="0dp" />
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/clear_dot" />
 
-    <Button
-        android:id="@+id/button4"
-        android:onClick="onUndo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/undo"
-        app:layout_constraintBaseline_toBaselineOf="@+id/shareBtn"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/dotView"
-        android:layout_marginStart="8dp" />
+        <Button
+            android:id="@+id/btnSecondAct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/open_activity" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/button5"
-        android:onClick="OnAllContentShare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/share_all_content"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/shareBtn"
-        app:layout_constraintLeft_toRightOf="@+id/button4"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/shareBtn"
-        android:layout_marginRight="8dp" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
