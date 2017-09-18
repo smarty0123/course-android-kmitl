@@ -26,7 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
         <activity android:name=".EditActivity"></activity>
     </application>
     <provider android:authorities="com.facebook.app.FacebookContentProvider1906784466255821"

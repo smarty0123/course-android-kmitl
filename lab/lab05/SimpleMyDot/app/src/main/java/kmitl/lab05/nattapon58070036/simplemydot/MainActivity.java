@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.net.Uri;
 
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -37,7 +39,7 @@ import kmitl.lab05.nattapon58070036.simplemydot.view.DotView;
 
 
 public class MainActivity extends AppCompatActivity
-        implements Dots.OnDotsChangeListener, DotView.OnDotViewPressListener {
+        implements DotView.OnDotViewPressListener{
     private DotView dotView;
     private Dots dots;
 
@@ -45,38 +47,19 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(savedInstanceState == null) {
+            initialFragment();
+        }
+    }
 
-        //dotView = (DotView) findViewById(R.id.dotView);
-        //dotView.setOnDotViewPressListener(this);
-
+    private void initialFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragmentContainer, new DotViewFragment().newInstance()).commit();
-
-        dots = new Dots();
-        dots.setListener(this);
+        fragmentManager.beginTransaction().add(R.id.fragmentContainer, new DotViewFragment().newInstance()).commit();
     }
 
-    public void onRandomDot(View view) {
-        Random random = new Random();
-        int centerX = random.nextInt(dotView.getWidth());
-        int centerY = random.nextInt(dotView.getHeight());
-        Dot newDot = new Dot(centerX, centerY, 70, new Colors().getColor());
-        dots.addDot(newDot);
-    }
 
     @Override
-    public void onDotsChanged(Dots dots) {
-        dotView.setDots(dots);
-        dotView.invalidate();
-    }
-
-    public void onRemoveAll(View view) {
-        dots.clearAll();
-        Toast.makeText(getApplicationContext(), "Cleared", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onDotViewPressed(int x, int y) {
+    public void onDotViewPressed(int x, int y, String status) {
         final int dotPosition = dots.findDot(x, y);
         if (dotPosition == -1) {
             Dot newDot = new Dot(x, y, 70, new Colors().getColor());
@@ -123,73 +106,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void OnAllContentShare(View view) {
+    /*public void OnAllContentShare(View view) {
         Bitmap bitmap = createBitmapFromView(getWindow().getDecorView().findViewById(android.R.id.content));
         saveBitmap(bitmap);
         Uri contentUri = getUriFile();
         shareIntent(contentUri);
-    }
+    }*/
 
-    public void onDotViewShare(View view) {
-        Bitmap bitmap = createBitmapFromView(dotView);
-        saveBitmap(bitmap);
-        Uri contentUri = getUriFile();
-        shareIntent(contentUri);
-    }
 
-    private Uri getUriFile() {
-        File imagePath = new File(getCacheDir(), "images");
-        File newFile = new File(imagePath, "image.png");
-        return FileProvider.getUriForFile(this, "kmitl.lab05.nattapon58070036.simplemydot.fileprovider", newFile);
-    }
-
-    private void shareIntent(Uri contentUri) {
-        if (contentUri != null) {
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
-            shareIntent.setDataAndType(contentUri, getContentResolver().getType(contentUri));
-            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            startActivity(Intent.createChooser(shareIntent, "Choose an app"));
-        }
-    }
-
-    private Bitmap createBitmapFromView(View view) {
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bitmap);
-        view.layout(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
-        view.draw(c);
-        return bitmap;
-    }
-
-    private void saveBitmap(Bitmap bitmap) {
-        try {
-            File cachePath = new File(this.getCacheDir(), "images");
-            cachePath.mkdirs();
-            FileOutputStream stream = new FileOutputStream(cachePath + "/image.png");
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            stream.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void onSecondAct(View view) {
-        final DotSerializable dotSerializable = new DotSerializable();
-        dotSerializable.setCenterX(150);
-        dotSerializable.setCenterY(150);
-        dotSerializable.setColor(Color.RED);
-        dotSerializable.setRadius(30);
-        final DotParcelable dotParcelable = new DotParcelable(150, 150, 30);
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        intent.putExtra("xValue", 17);
-        intent.putExtra("dotSerializable", dotSerializable);
-        intent.putExtra("dotParcelable", dotParcelable);
-        startActivity(intent);
-    }
-
-    public void onUndo(View view) {
-        dots.undoDot();
-    }
 }

@@ -11,8 +11,11 @@ import android.view.View;
 import kmitl.lab05.nattapon58070036.simplemydot.model.Dot;
 import kmitl.lab05.nattapon58070036.simplemydot.model.Dots;
 
-public class DotView extends View {
+import static android.R.attr.radius;
 
+public class DotView extends View {
+    private long startTouch;
+    private long stopTouch;
     private Paint paint;
     private Dots allDot;
 
@@ -30,7 +33,7 @@ public class DotView extends View {
     }
 
     public interface OnDotViewPressListener {
-        void onDotViewPressed(int x, int y);
+        void onDotViewPressed(int x, int y, String status);
     }
 
     private OnDotViewPressListener onDotViewPressListener;
@@ -42,15 +45,29 @@ public class DotView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            startTouch = event.getEventTime();
+        }
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            stopTouch = event.getEventTime();
+            long timeTouched = stopTouch - startTouch;
+            if (timeTouched < 300) {
                 this.onDotViewPressListener
                         .onDotViewPressed(
                                 (int) event.getX(),
-                                (int) event.getY());
+                                (int) event.getY(),
+                                "short");
                 return true;
+            } else {
+                this.onDotViewPressListener
+                        .onDotViewPressed(
+                                (int) event.getX(),
+                                (int) event.getY(),
+                                "long");
+                return true;
+            }
         }
-        return false;
+        return true;
     }
 
     public DotView(Context context) {
