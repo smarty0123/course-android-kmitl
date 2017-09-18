@@ -2,12 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kmitl.lab03.nattapon58070036.simplemydot.fragment.DotViewFragment">
+    tools:context="kmitl.lab05.nattapon58070036.simplemydot.fragment.DotViewFragment">
 
-    <kmitl.lab03.nattapon58070036.simplemydot.view.DotView
+    <kmitl.lab05.nattapon58070036.simplemydot.view.DotView
         android:id="@+id/fragmentDotView"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:background="@color/com_facebook_button_send_background_color_pressed"
         />
 
 </FrameLayout>

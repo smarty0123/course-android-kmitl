@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kmitl.lab03.nattapon58070036.simplemydot">
+    package="kmitl.lab05.nattapon58070036.simplemydot">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
@@ -11,12 +11,13 @@
         android:theme="@style/AppTheme">
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="kmitl.lab03.nattapon58070036.simplemydot.fileprovider"
+            android:authorities="kmitl.lab05.nattapon58070036.simplemydot.fileprovider"
             android:grantUriPermissions="true"
             android:exported="false">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
+                android:resource="@xml/filepaths"
+                />
         </provider>
         <activity android:name=".MainActivity">
             <intent-filter>
