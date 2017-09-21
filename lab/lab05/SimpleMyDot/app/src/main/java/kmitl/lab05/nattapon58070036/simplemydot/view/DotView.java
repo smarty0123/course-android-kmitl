@@ -11,13 +11,13 @@ import android.view.View;
 import kmitl.lab05.nattapon58070036.simplemydot.model.Dot;
 import kmitl.lab05.nattapon58070036.simplemydot.model.Dots;
 
-import static android.R.attr.radius;
 
 public class DotView extends View {
     private long startTouch;
     private long stopTouch;
     private Paint paint;
     private Dots allDot;
+    private OnDotViewPressListener onDotViewPressListener;
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -36,7 +36,6 @@ public class DotView extends View {
         void onDotViewPressed(int x, int y, String status);
     }
 
-    private OnDotViewPressListener onDotViewPressListener;
 
     public void setOnDotViewPressListener(
             OnDotViewPressListener onDotViewPressListener) {
@@ -89,4 +88,5 @@ public class DotView extends View {
     public void setDots(Dots dots) {
         this.allDot = dots;
     }
+
 }

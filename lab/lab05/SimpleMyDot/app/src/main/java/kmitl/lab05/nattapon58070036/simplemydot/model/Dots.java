@@ -1,8 +1,20 @@
 package kmitl.lab05.nattapon58070036.simplemydot.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
-public class Dots {
+public class Dots implements Parcelable {
+
+    public void setAllDot(ArrayList<Dot> allDot) {
+        this.allDot = allDot;
+    }
+
+    public void set(int i, Dot dot) {
+        this.allDot.set(i, dot);
+        this.listener.onDotsChanged(this);
+    }
 
     public interface OnDotsChangeListener {
         void onDotsChanged(Dots dots);
@@ -19,6 +31,7 @@ public class Dots {
     public List<Dot> getAllDot() {
         return allDot;
     }
+
 
     public void addDot(Dot dot) {
         this.allDot.add(dot);
@@ -65,4 +78,39 @@ public class Dots {
         this.listener.onDotsChanged(this);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        //dest.writeParcelable((Parcelable) this.listener, flags);
+        dest.writeList(this.allDot);
+        dest.writeList(this.backupDot);
+
+    }
+
+    public Dots() {
+    }
+
+    protected Dots(Parcel in) {
+        this.listener = in.readParcelable(OnDotsChangeListener.class.getClassLoader());
+        this.allDot = new ArrayList<Dot>();
+        in.readList(this.allDot, Dot.class.getClassLoader());
+        this.backupDot = new ArrayList<Dot>();
+        in.readList(this.backupDot, Dot.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Dots> CREATOR = new Parcelable.Creator<Dots>() {
+        @Override
+        public Dots createFromParcel(Parcel source) {
+            return new Dots(source);
+        }
+
+        @Override
+        public Dots[] newArray(int size) {
+            return new Dots[size];
+        }
+    };
 }

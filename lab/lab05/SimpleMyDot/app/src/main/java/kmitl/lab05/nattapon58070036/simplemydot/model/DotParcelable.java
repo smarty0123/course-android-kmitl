@@ -38,6 +38,14 @@ public class DotParcelable implements Parcelable {
         this.dotPosition = dotPosition;
     }
 
+    public DotParcelable(int centerX, int centerY, int radius, int dotPosition, int color) {
+        this.centerX = centerX;
+        this.centerY = centerY;
+        this.radius = radius;
+        this.dotPosition = dotPosition;
+        this.color = color;
+    }
+
 
     protected DotParcelable(Parcel in) {
         centerX = in.readInt();
