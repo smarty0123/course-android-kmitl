@@ -7,4 +7,11 @@
     <string name="share">Share</string>
     <string name="undo">UNDO</string>
     <string name="share_all_content">Share All</string>
+    <string name="color">Color</string>
+    <string name="change_color">Change Color</string>
+    <string name="x_axis">X Axis</string>
+    <string name="y_axis">Y Axis</string>
+    <string name="size">Size</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 </resources>

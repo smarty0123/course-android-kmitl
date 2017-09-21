@@ -18,13 +18,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="40dp"
-            android:text="Color" />
+            android:text="@string/color" />
         <Button
             android:id="@+id/btnChangeColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Change Color" />
+            android:text="@string/change_color" />
 
     </LinearLayout>
 
@@ -41,7 +41,7 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:gravity="center"
-            android:text="X Axis" />
+            android:text="@string/x_axis" />
             <SeekBar
                 android:id="@+id/xSeekBar"
                 android:layout_width="match_parent"
@@ -63,7 +63,7 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:gravity="center"
-            android:text="Y Axis" />
+            android:text="@string/y_axis" />
         <SeekBar
             android:id="@+id/ySeekBar"
             android:layout_width="match_parent"
@@ -84,7 +84,7 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:gravity="center"
-            android:text="Size" />
+            android:text="@string/size" />
         <SeekBar
             android:id="@+id/sizeSeekBar"
             android:layout_width="match_parent"
@@ -98,13 +98,13 @@
         android:layout_weight="1">
         <Button
             android:id="@+id/btnCancel"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/btnOK"
-            android:text="OK"
+            android:text="@string/ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
