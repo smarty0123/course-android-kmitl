@@ -1,5 +1,6 @@
 package kmitl.com.lab07.lazyinstagram.api;
 
+import kmitl.com.lab07.lazyinstagram.model.UserProfile;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
