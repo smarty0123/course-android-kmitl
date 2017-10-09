@@ -72,8 +72,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void display(UserProfile userProfile) {
         ImageView imageProfile = findViewById(R.id.imageProfile);
         Glide.with(MainActivity.this).load(userProfile.getUrlProfile()).into(imageProfile);
-        /*TextView textName = findViewById(R.id.textUser);
-        textName.setText("@"+userProfile.getUser());*/
         TextView textPost = findViewById(R.id.textPost);
         textPost.setText("Post\n" + userProfile.getPost());
         TextView textFollowing = findViewById(R.id.textFollowing);
