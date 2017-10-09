@@ -22,10 +22,12 @@ import kmitl.com.lab07.lazyinstagram.model.PostModel;
 class Holder extends RecyclerView.ViewHolder{
     ImageView image;
     TextView textLike;
+    TextView textComment;
     public Holder(View itemView) {
         super(itemView);
         image = itemView.findViewById(R.id.image);
         textLike = itemView.findViewById(R.id.textLike);
+        textComment = itemView.findViewById(R.id.textComment);
     }
 }
 
@@ -66,6 +68,11 @@ public class PostAdapter extends RecyclerView.Adapter<Holder>{
     public void onBindViewHolder(Holder holder, int position) {
         String imageUrl = data.get(position).getUrl();
         Glide.with(context).load(imageUrl).into(holder.image);
+        if(layoutType.equals("list")){
+            holder.textLike.setText(Integer.toString(data.get(position).getLike()));
+            holder.textComment.setText(Integer.toString(data.get(position).getComment()));
+        }
+
     }
     @Override
     public int getItemCount() {
