@@ -1,10 +1,8 @@
-package kmitl.com.lab07.lazyinstagram.model;
+package kmitl.lab07.nattapon58070036.mylazyinstagram.model;
 
 import java.util.List;
 
-/**
- * Created by nobody on 06-Oct-17.
- */
+
 
 public class UserProfile {
     private String bio;

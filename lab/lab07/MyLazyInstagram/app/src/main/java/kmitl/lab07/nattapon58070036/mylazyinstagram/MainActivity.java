@@ -1,7 +1,8 @@
-package kmitl.com.lab07.lazyinstagram;
+package kmitl.lab07.nattapon58070036.mylazyinstagram;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,9 +17,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import kmitl.com.lab07.lazyinstagram.adapter.PostAdapter;
-import kmitl.com.lab07.lazyinstagram.api.LazyInstagramApi;
-import kmitl.com.lab07.lazyinstagram.model.UserProfile;
+import kmitl.lab07.nattapon58070036.mylazyinstagram.adapter.PostAdapter;
+import kmitl.lab07.nattapon58070036.mylazyinstagram.api.LazyInstagramApi;
+import kmitl.lab07.nattapon58070036.mylazyinstagram.model.UserProfile;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView = findViewById(R.id.list);
         if (layoutType.equals("grid")) {
             recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        } else if (layoutType.equals("list")) {
+        } else{
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
         recyclerView.setAdapter(postAdapter);

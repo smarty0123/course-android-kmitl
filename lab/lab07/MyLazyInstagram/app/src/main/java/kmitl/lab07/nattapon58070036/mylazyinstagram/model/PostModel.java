@@ -1,8 +1,4 @@
-package kmitl.com.lab07.lazyinstagram.model;
-
-/**
- * Created by SMART on 8/10/2560.
- */
+package kmitl.lab07.nattapon58070036.mylazyinstagram.model;
 
 public class PostModel {
     private int comment;

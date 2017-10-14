@@ -1,4 +1,4 @@
-package kmitl.com.lab07.lazyinstagram;
+package kmitl.lab07.nattapon58070036.mylazyinstagram;
 
 import org.junit.Test;
 

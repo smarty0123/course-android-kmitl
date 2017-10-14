@@ -1,4 +1,4 @@
-package kmitl.com.lab07.lazyinstagram.adapter;
+package kmitl.lab07.nattapon58070036.mylazyinstagram.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +13,9 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import kmitl.com.lab07.lazyinstagram.R;
-import kmitl.com.lab07.lazyinstagram.model.PostModel;
+import kmitl.lab07.nattapon58070036.mylazyinstagram.R;
+import kmitl.lab07.nattapon58070036.mylazyinstagram.model.PostModel;
 
-/**
- * Created by student on 10/6/2017 AD.
- */
 class Holder extends RecyclerView.ViewHolder {
     ImageView image;
     TextView textLike;

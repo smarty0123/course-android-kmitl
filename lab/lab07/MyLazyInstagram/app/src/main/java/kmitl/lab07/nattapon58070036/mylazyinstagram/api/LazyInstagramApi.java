@@ -1,6 +1,7 @@
-package kmitl.com.lab07.lazyinstagram.api;
+package kmitl.lab07.nattapon58070036.mylazyinstagram.api;
 
-import kmitl.com.lab07.lazyinstagram.model.UserProfile;
+
+import kmitl.lab07.nattapon58070036.mylazyinstagram.model.UserProfile;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
