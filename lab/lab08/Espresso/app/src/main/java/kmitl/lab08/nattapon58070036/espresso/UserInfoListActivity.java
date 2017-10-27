@@ -27,6 +27,8 @@ public class UserInfoListActivity extends AppCompatActivity {
     private MyAdapter adapter;
     private CommonSharePreference preference;
 
+    private UserInfoList userInfoList;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,4 +61,8 @@ public class UserInfoListActivity extends AppCompatActivity {
 
     }
 
+    public void onClearList(View view) {
+        preference.save(UserInfoListActivity.EXTTRA_LIST, null);
+        displaySuggestsList(new ArrayList<UserInfo>());
+    }
 }

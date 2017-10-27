@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.editTExtName)
+    @BindView(R.id.editTextName)
     EditText editTExtName;
 
     @BindView(R.id.editTextAge)
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         if (name.isEmpty() || age.isEmpty()) {
             validate();
         } else {
+            Toast.makeText(MainActivity.this, "Added", Toast.LENGTH_SHORT).show();
             setUserInfo(name, age);
         }
     }
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUserInfo(String name, String age) {
+        userInfoList = (UserInfoList) preference.read(UserInfoListActivity.EXTTRA_LIST, UserInfoList.class);
         UserInfo userInfo = new UserInfo();
         userInfo.setName(name);
         userInfo.setAge(age);

@@ -26,6 +26,13 @@
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </RelativeLayout>
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="onClearList"
+        android:text="Clear List"
+        />
 </LinearLayout>

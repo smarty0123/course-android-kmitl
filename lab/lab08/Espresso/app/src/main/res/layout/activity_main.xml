@@ -23,7 +23,7 @@
         android:text="Name :"/>
 
     <EditText
-        android:id="@+id/editTExtName"
+        android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
