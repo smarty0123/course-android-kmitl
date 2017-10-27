@@ -43,6 +43,7 @@ public class MainActivityTest {
         onView(withId(android.R.id.button1)).perform(click());
 
     }
+
     //โดยไม่กรอก Name และ Age=20 กดปุ่ม ADDED จะต้องเจอ Please Enter user info
     @Test
     public void testCase2() {
@@ -62,6 +63,7 @@ public class MainActivityTest {
 
         onView(withId(R.id.textNotFound)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
+
     //โดยไม่กรอก Age และ Name=Ying กดปุ่ม ADDED จะต้องเจอ Please Enter user info
     @Test
     public void testCase4() {
@@ -74,6 +76,7 @@ public class MainActivityTest {
 
         onView(withId(android.R.id.button1)).perform(click());
     }
+
     //โดยกรอก Name=Ying และ Age=20 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Ying อายุ 20 เป็นตัวแรก
     @Test
     public void testCase5() {
@@ -94,6 +97,7 @@ public class MainActivityTest {
                 .atPositionOnView(0, R.id.textAge))
                 .check(matches(withText("20")));
     }
+
     //โดยกรอก Name=Ladarat และ Age=20 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Ladarat อายุ 20 ใน ListView ลำดับที่ 2
     @Test
     public void testCase6() {
@@ -117,6 +121,7 @@ public class MainActivityTest {
 
 
     }
+
     //โดยกรอก Name=Somkait และ Age=80 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Somkait อายุ 80 ใน ListView ลำดับที่ 3
     @Test
     public void testCase7() {
@@ -138,6 +143,7 @@ public class MainActivityTest {
                 .atPositionOnView(2, R.id.textAge))
                 .check(matches(withText("80")));
     }
+
     //โดยกรอก Name=Prayoch และ Age=60 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Prayoch อายุ 60 ใน ListView ลำดับที่ 4
     @Test
     public void testCase8() {
@@ -160,6 +166,7 @@ public class MainActivityTest {
                 .check(matches(withText("60")));
 
     }
+
     //โดยกรอก Name=Prayoch และ Age=50 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Prayoch อายุ 50 ใน ListView ลำดับที่ 5
     @Test
     public void testCase9() {
@@ -182,6 +189,7 @@ public class MainActivityTest {
                 .check(matches(withText("50")));
 
     }
+
     //โดยกดปุ่มGO TO LISTแล้วกดปุ่ม CLEAR LIST จะเจอ Not Found
     @Test
     public void testCase10() {
