@@ -1,6 +1,7 @@
 package kmitl.lab08.nattapon58070036.espresso;
 
 
+import android.os.SystemClock;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -19,10 +20,11 @@ import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVi
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
-    // Convenience helper
+
     public static RecyclerViewMatcher withRecyclerView(final int recyclerViewId) {
         return new RecyclerViewMatcher(recyclerViewId);
     }
@@ -31,9 +33,12 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+
     //โดยไม่กรอก Name และ Age กดปุ่ม ADDED จะต้องเจอ Please Enter user info
     @Test
     public void testCase1() {
+
+        SystemClock.sleep(1000);
 
         onView(withId(R.id.buttonAdded)).perform(click());
 
@@ -46,6 +51,9 @@ public class MainActivityTest {
     //โดยไม่กรอก Name และ Age=20 กดปุ่ม ADDED จะต้องเจอ Please Enter user info
     @Test
     public void testCase2() {
+
+        SystemClock.sleep(1000);
+
         onView(withId(R.id.editTextAge)).perform(replaceText("20"));
 
         onView(withId(R.id.buttonAdded)).perform(click());
@@ -53,19 +61,26 @@ public class MainActivityTest {
         onView(withId(android.R.id.message)).check(matches(withText("Please Enter user info")));
 
         onView(withId(android.R.id.button1)).perform(click());
+
     }
 
     //ยังไม่มีการเพิ่ม UserInfo และกด GO TO LIST จะเจอ Not Found
     @Test
     public void testCase3() {
+
+        SystemClock.sleep(1000);
+
         onView(withId(R.id.buttonGotoList)).perform(click());
 
         onView(withId(R.id.textNotFound)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+
     }
 
     //โดยไม่กรอก Age และ Name=Ying กดปุ่ม ADDED จะต้องเจอ Please Enter user info
     @Test
     public void testCase4() {
+
+        SystemClock.sleep(1000);
 
         onView(withId(R.id.editTextName)).perform(replaceText("Ying"));
 
@@ -74,11 +89,14 @@ public class MainActivityTest {
         onView(withId(android.R.id.message)).check(matches(withText("Please Enter user info")));
 
         onView(withId(android.R.id.button1)).perform(click());
+
     }
 
     //โดยกรอก Name=Ying และ Age=20 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Ying อายุ 20 เป็นตัวแรก
     @Test
     public void testCase5() {
+
+        SystemClock.sleep(1000);
 
         onView(withId(R.id.editTextName)).perform(replaceText("Ying"), closeSoftKeyboard());
 
@@ -100,15 +118,23 @@ public class MainActivityTest {
     //โดยกรอก Name=Ladarat และ Age=20 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Ladarat อายุ 20 ใน ListView ลำดับที่ 2
     @Test
     public void testCase6() {
-        onView(withId(R.id.editTextName)).perform(click());
 
-        onView(withId(R.id.editTextName)).perform(replaceText("Ladarat"), closeSoftKeyboard());
+        onView(withId(R.id.editTextName)).perform(replaceText("Ying"), closeSoftKeyboard());
 
         onView(withId(R.id.editTextAge)).perform(replaceText("20"), closeSoftKeyboard());
 
         onView(withId(R.id.buttonAdded)).perform(click());
 
+        onView(withId(R.id.editTextName)).perform(replaceText("Ladarat"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("20"), closeSoftKeyboard());
+
+        SystemClock.sleep(1000);
+
+        onView(withId(R.id.buttonAdded)).perform(click());
+
         onView(withId(R.id.buttonGotoList)).perform(click());
+
 
         onView(withRecyclerView(R.id.list)
                 .atPositionOnView(1, R.id.textName))
@@ -124,15 +150,29 @@ public class MainActivityTest {
     //โดยกรอก Name=Somkait และ Age=80 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Somkait อายุ 80 ใน ListView ลำดับที่ 3
     @Test
     public void testCase7() {
-        onView(withId(R.id.editTextName)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Ying"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("20"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Ladarat"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("20"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
 
         onView(withId(R.id.editTextName)).perform(replaceText("Somkait"), closeSoftKeyboard());
 
         onView(withId(R.id.editTextAge)).perform(replaceText("80"), closeSoftKeyboard());
 
+        SystemClock.sleep(1000);
+
         onView(withId(R.id.buttonAdded)).perform(click());
 
         onView(withId(R.id.buttonGotoList)).perform(click());
+
 
         onView(withRecyclerView(R.id.list)
                 .atPositionOnView(2, R.id.textName))
@@ -146,11 +186,30 @@ public class MainActivityTest {
     //โดยกรอก Name=Prayoch และ Age=60 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Prayoch อายุ 60 ใน ListView ลำดับที่ 4
     @Test
     public void testCase8() {
-        onView(withId(R.id.editTextName)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Ying"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("20"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Ladarat"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("20"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Somkait"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("80"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
 
         onView(withId(R.id.editTextName)).perform(replaceText("Prayoch"), closeSoftKeyboard());
 
         onView(withId(R.id.editTextAge)).perform(replaceText("60"), closeSoftKeyboard());
+
+        SystemClock.sleep(1000);
 
         onView(withId(R.id.buttonAdded)).perform(click());
 
@@ -169,15 +228,41 @@ public class MainActivityTest {
     //โดยกรอก Name=Prayoch และ Age=50 กดปุ่ม ADDED และกด GO TO LIST จะต้องเจอ Prayoch อายุ 50 ใน ListView ลำดับที่ 5
     @Test
     public void testCase9() {
-        onView(withId(R.id.editTextName)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Ying"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("20"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Ladarat"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("20"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Somkait"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("80"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
+
+        onView(withId(R.id.editTextName)).perform(replaceText("Prayoch"), closeSoftKeyboard());
+
+        onView(withId(R.id.editTextAge)).perform(replaceText("60"), closeSoftKeyboard());
+
+        onView(withId(R.id.buttonAdded)).perform(click());
 
         onView(withId(R.id.editTextName)).perform(replaceText("Prayoch"), closeSoftKeyboard());
 
         onView(withId(R.id.editTextAge)).perform(replaceText("50"), closeSoftKeyboard());
 
+        SystemClock.sleep(1000);
+
         onView(withId(R.id.buttonAdded)).perform(click());
 
         onView(withId(R.id.buttonGotoList)).perform(click());
+
 
         onView(withRecyclerView(R.id.list)
                 .atPositionOnView(4, R.id.textName))
@@ -190,7 +275,7 @@ public class MainActivityTest {
     }
 
     //โดยกดปุ่มGO TO LISTแล้วกดปุ่ม CLEAR LIST จะเจอ Not Found
-    @Test
+    /*@Test
     public void testCase10() {
 
         onView(withId(R.id.buttonGotoList)).perform(click());
@@ -199,7 +284,6 @@ public class MainActivityTest {
 
         onView(withId(R.id.textNotFound)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
 
-    }
-
+    }*/
 
 }
