@@ -34,5 +34,6 @@
         android:layout_gravity="center"
         android:onClick="onClearList"
         android:text="Clear List"
+        android:textStyle="bold"
         />
 </LinearLayout>

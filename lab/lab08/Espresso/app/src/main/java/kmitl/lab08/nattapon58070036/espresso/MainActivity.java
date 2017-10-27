@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this, this);
         preference = new CommonSharePreference(this);
+        preference.save(UserInfoListActivity.EXTTRA_LIST, null);
         userInfoList = (UserInfoList) preference.read(UserInfoListActivity.EXTTRA_LIST, UserInfoList.class);
 
     }
